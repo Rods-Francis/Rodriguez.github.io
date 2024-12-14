@@ -226,3 +226,85 @@
         
 </body>
 </html>
+
+
+<script>
+  // 1. Smooth Scrolling Navigation
+  const links = document.querySelectorAll('nav a');
+  
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      window.scrollTo({
+        top: targetElement.offsetTop - 80, // Adjust the offset for fixed navbar
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // 2. Mobile Navigation (Hamburger Menu)
+  const menuToggle = document.createElement('button');
+  menuToggle.innerHTML = `<i class="fas fa-bars"></i>`;
+  menuToggle.classList.add('menu-toggle');
+  document.querySelector('nav').appendChild(menuToggle);
+
+  menuToggle.addEventListener('click', () => {
+    const menu = document.querySelector('nav ul');
+    menu.classList.toggle('active');
+  });
+
+  // 3. Scroll Animations (Fade-In Effect)
+  const fadeElements = document.querySelectorAll('.fade-in');
+  window.addEventListener('scroll', () => {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom >= 0) {
+        el.classList.add('visible');
+      }
+    });
+  });
+
+  // 4. Image Hover Effects in the Bestsellers Section
+  const photoGridItems = document.querySelectorAll('.photo-grid-item img');
+  photoGridItems.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      item.style.transform = 'scale(1.05)';
+      item.style.transition = 'transform 0.3s';
+    });
+    item.addEventListener('mouseout', () => {
+      item.style.transform = 'scale(1)';
+    });
+  });
+
+  // 5. Form Validation for Newsletter and Suggestions
+  const form = document.querySelector('footer .newsletter form');
+  form.addEventListener('submit', (e) => {
+    const emailInput = form.querySelector('input[type="email"]');
+    const messageInput = form.querySelector('textarea');
+    if (!emailInput.value || !messageInput.value) {
+      e.preventDefault();
+      alert("Please fill out both the email and message fields.");
+    }
+  });
+
+  // 6. Back to Top Button
+  const backToTopButton = document.createElement('button');
+  backToTopButton.textContent = '↑';
+  backToTopButton.classList.add('back-to-top');
+  document.body.appendChild(backToTopButton);
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Show/Hide Back to Top Button on Scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      backToTopButton.style.display = 'block';
+    } else {
+      backToTopButton.style.display = 'none';
+    }
+  });
+</script>
