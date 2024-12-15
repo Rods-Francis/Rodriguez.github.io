@@ -15,11 +15,11 @@ html{
 
 body {
 background: url('mainBG.jpg') no-repeat center center fixed;
-background-size: cover; /* Keep this to ensure it covers the area */
-margin: 0; /* Ensure there's no margin */
-padding: 0; /* Ensure there's no padding */
+background-size: cover;
+margin: 0; 
+padding: 0; 
 height: 100vh;
-width: 100vw; /* Set height to full viewport height */
+width: 100vw;
 overflow:auto;
 
 }
@@ -186,7 +186,7 @@ section nav ul li a:hover{
   animation: rotate 12s linear infinite;
   margin: 0 auto;
 }
-/*
+
 @keyframes rotate {
   0%{
       transform: rotate(0deg);
@@ -194,7 +194,7 @@ section nav ul li a:hover{
   100%{
       transform: rotate(360deg);
   }
-}*/
+}
 
  .second p{
   font-size: 18px;
@@ -504,6 +504,39 @@ width:45%;
 
 color: #fd0002;
 
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide menu by default */
+        flex-direction: column; /* Make it vertical */
+        background: #fff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul.active {
+        display: flex; /* Show menu when active */
+    }
+
+    .hamburger-menu {
+        display: flex; /* Show hamburger icon */
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .hamburger-menu i {
+        font-size: 24px;
+        color: black;
+    }
+
+    .logo img {
+        width: 50px; /* Adjust for mobile */
+    }
 }
 
 
